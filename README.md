@@ -13,3 +13,7 @@ Large language model is a machine learning model designed to understand, generat
 
 # Generative AI
 Generative AI refers to deep-learning models that can generate high-quality text, images, and other content based on the data they were trained on.
+
+## Quick Information
+- GPT(Generative Pre-trained Transformer) is a series of llm developed by OpenAI
+- ChatGPT is a generative AI specifically fine-tuned for conversational interactions.
