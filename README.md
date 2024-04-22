@@ -13,3 +13,6 @@ CLM generate text sequentially, one token at a time, based only on the tokens th
 
 # Large Language Model
 Large language model is a machine learning model designed to understand, generate, and manipulate human language on a vast scale. These models are typically built using deep learning techniques, especially variants of the transformer architecture, and are trained on massive datasets of text from the internet and other sources.
+
+# Generative AI
+Generative AI refers to deep-learning models that can generate high-quality text, images, and other content based on the data they were trained on.
