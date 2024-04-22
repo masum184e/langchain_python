@@ -17,3 +17,6 @@ Generative AI refers to deep-learning models that can generate high-quality text
 ## Quick Information
 - GPT(Generative Pre-trained Transformer) is a series of llm developed by OpenAI
 - ChatGPT is a generative AI specifically fine-tuned for conversational interactions.
+
+# Langchain
+LangChain is an open source framework for building applications based on large language models (LLMs). It provides tools and abstractions to improve the customization, accuracy, and relevancy of the information the models generate. Basically it integrate ai(LLm model) with web/mobile applications. By abstracting complexities, it simplifies the process compared to direct integration, making it more accessible and manageable.
