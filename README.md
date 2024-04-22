@@ -10,3 +10,6 @@ MLM are a specific type of language model that predicts masked or hidden or blan
 
 ## Casual Language Model
 CLM generate text sequentially, one token at a time, based only on the tokens that came before it in the input sequence. It basically predict next word based on previous word
+
+# Large Language Model
+Large language model is a machine learning model designed to understand, generate, and manipulate human language on a vast scale. These models are typically built using deep learning techniques, especially variants of the transformer architecture, and are trained on massive datasets of text from the internet and other sources.
