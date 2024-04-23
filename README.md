@@ -33,6 +33,20 @@ Generative AI refers to deep-learning models that can generate high-quality text
 ## Quick Information
 - GPT(Generative Pre-trained Transformer) is a series of llm developed by OpenAI
 - ChatGPT is a generative AI specifically fine-tuned for conversational interactions.
+- OpenAI's work best with JSON while Anthropic's models work best with XML.
 
 # Langchain
-LangChain is an open source framework for building applications based on large language models (LLMs). It provides tools and abstractions to improve the customization, accuracy, and relevancy of the information the models generate. Basically it integrate ai(LLm model) with web/mobile applications. By abstracting complexities, it simplifies the process compared to direct integration, making it more accessible and manageable.
+LangChain is an open source framework for building applications based on large language models (LLMs). It provides tools and abstractions to improve the customization, accuracy, and relevancy of the information the models generate. Basically it integrate ai(LLm model) with web/mobile applications. By abstracting complexities, it simplifies the process compared to direct integration, making it more accessible and manageable. The core element of any language model application is...the model. LangChain gives you the building blocks to interface with any language model.
+
+## Installation
+```
+pip install langchain
+```
+
+Language models in LangChain come in two flavors:
+
+__ChatModels:__ The ChatModel objects take a list of messages as input and output a message. Chat models are often backed by LLMs but tuned specifically for having conversations. 
+
+__LLM:__ LLMs in LangChain refer to pure text completion models. The LLM objects take string as input and output string. OpenAI's GPT-3 is implemented as an LLM.
+
+The LLM returns a string, while the ChatModel returns a message. The main difference between them is their input and output schemas.  
