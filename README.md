@@ -8,6 +8,22 @@ __MLM - Masked Language Model__ are a specific type of language model that predi
 
 __CLM - Casual Language Model__ generate text sequentially, one token at a time, based only on the tokens that came before it in the input sequence. It basically predict next word based on previous word
 
+Here's how a typical language model works:
+
+1. *Input:* The process starts with the user providing input in the form of text. This input can be a question, a prompt for generating text, or any other form of communication.
+
+2. *Tokenization:* The input text is split into smaller units called tokens. These tokens could be words, subwords, or even characters, depending on the model architecture and tokenization strategy used.
+
+3. *Embedding:* Each token is then converted into a numerical representation called word embeddings or token embeddings. These embeddings capture the semantic meaning of the tokens and their relationships with other tokens.
+
+4. *Processing:* The embeddings of the tokens are fed into the model's neural network architecture. This network consists of multiple layers of processing units (neurons) that transform the input embeddings through various mathematical operations.
+
+5. *Contextual Understanding:* As the input propagate through the network, the model learns to understand the contextual relationships between the tokens. It allow the model to focus on relevant parts of the input.
+
+6. *Prediction:* Based on its understanding of the input text and the context provided, the model generates a response. 
+
+7. *Output:* The model outputs the predicted tokens, which can be used to generate text or to perform other tasks such as text classification, translation, or summarization.
+
 # Large Language Model
 Large language model is a machine learning model designed to understand, generate, and manipulate human language on a vast scale. These models are typically built using deep learning techniques, especially variants of the transformer architecture, and are trained on massive datasets of text from the internet and other sources.
 
