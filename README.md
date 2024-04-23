@@ -43,6 +43,7 @@ LangChain is an open source framework for building applications based on large l
 pip install langchain
 ```
 
+# Model I/O - OpenAI
 Language models in LangChain come in two flavors:
 
 __ChatModels:__ The ChatModel objects take a list of messages as input and output a message. Chat models are often backed by LLMs but tuned specifically for having conversations. 
@@ -50,3 +51,26 @@ __ChatModels:__ The ChatModel objects take a list of messages as input and outpu
 __LLM:__ LLMs in LangChain refer to pure text completion models. The LLM objects take string as input and output string. OpenAI's GPT-3 is implemented as an LLM.
 
 The LLM returns a string, while the ChatModel returns a message. The main difference between them is their input and output schemas.  
+
+## Installation
+```
+pip install langchain-openai
+```
+
+We can see the difference between an LLM and a ChatModel when we invoke it.
+
+```
+from langchain_openai import ChatOpenAI
+from langchain_openai import OpenAI
+
+llm = ChatOpenAI(model_name="gpt-3.5-turbo-0125",api_key="...")
+chat_model = ChatOpenAI(model="gpt-3.5-turbo-0125",api_key="...")
+
+text = "What would be a good company name for a company that makes colorful socks?"
+print("LLM Response: "+llm.invoke(text))
+
+messages = [HumanMessage(content=text)]
+print("Chat Model: "+chat_model.invoke(messages))
+```
+
+__Reference:__ [OpenAI Model List](https://platform.openai.com/docs/models), [OpenAI](https://api.python.langchain.com/en/latest/llms/langchain_openai.llms.base.OpenAI.html), [ChatOpenAI](https://api.python.langchain.com/en/latest/llms/langchain_openai.llms.base.OpenAI.html), [HumanMessage](https://api.python.langchain.com/en/latest/messages/langchain_core.messages.human.HumanMessage.html)
