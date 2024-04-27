@@ -57,6 +57,7 @@ The LLM returns a string, while the ChatModel returns a message. The main differ
 pip install langchain-openai
 ```
 
+## Initialize The Model
 We can see the difference between an LLM and a ChatModel when we invoke it.
 
 ```
@@ -74,3 +75,79 @@ print("Chat Model: "+chat_model.invoke(messages))
 ```
 
 __Reference:__ [OpenAI Model List](https://platform.openai.com/docs/models), [OpenAI](https://api.python.langchain.com/en/latest/llms/langchain_openai.llms.base.OpenAI.html), [ChatOpenAI](https://api.python.langchain.com/en/latest/llms/langchain_openai.llms.base.OpenAI.html), [HumanMessage](https://api.python.langchain.com/en/latest/messages/langchain_core.messages.human.HumanMessage.html)
+
+## Prompt Templates
+Most LLM applications do not pass user input directly into an LLM. Usually they will add the user input to a larger piece of text, that provides additional context on the specific task at hand so that llm can understand user input more efficiently.
+
+Typically, language models expect the prompt to either be a string or else a list of chat messages. Use `PromptTemplate` to create a template for a string prompt and `ChatPromptTemplate` to create a list of messages
+
+If the user only had to provide the description of a specific topic but not the instruction that model needs, it would be great!! PromptTemplates help with exactly this! It bundle up all the logic & instruction going from user input into a fully fromatted prompt that llm model required.
+
+```
+from langchain_openai import ChatOpenAI
+from langchain_openai import OpenAI
+from langchain_core.prompts import PromptTemplate
+
+llm = ChatOpenAI(model_name="gpt-3.5-turbo-0125",api_key="...")
+chat_model = ChatOpenAI(model="gpt-3.5-turbo-0125",api_key="...")
+
+prompt = PromptTemplate.from_template("What is a good name for a company that makes {product}?")
+prompt.format(product="colorful socks")
+
+# PROMPT FROM PROMPT TEMPLATE
+print("Prompt: "+prompt)
+
+# LLM RESPONSE
+print("LLM Response: "+llm.invoke(text))
+
+# CHAT MODEL RESPONSE
+messages = [HumanMessage(content=text)]
+print("Chat Model: "+chat_model.invoke(messages))
+```
+
+__Reference:__ [PromptTemplate](https://api.python.langchain.com/en/latest/prompts/langchain_core.prompts.prompt.PromptTemplate.html)
+
+## ChatPromptTemplate
+Each chat message is associated with content, and an additional parameter called `role`. For example, in the OpenAI Chat Completions API, a chat message can be associated with an AI assistant, a human or a system role.
+
+```
+from langchain_openai import ChatOpenAI
+from langchain_openai import OpenAI
+from langchain_core.prompts import ChatPromptTemplate
+
+llm = ChatOpenAI(model_name="gpt-3.5-turbo-0125",api_key="...")
+chat_model = ChatOpenAI(model="gpt-3.5-turbo-0125",api_key="...")
+
+chat_template = ChatPromptTemplate.from_messages(
+    [
+        ("system", "You are a helpful AI bot. Your name is {name}."),
+        ("human", "Hello, how are you doing?"),
+        ("ai", "I'm doing well, thanks!"),
+        ("human", "{user_input}"),
+    ]
+)
+
+prompt = chat_template.format_messages(name="Bob", user_input="What is your name?")
+
+# PROMPT FROM PROMPT TEMPLATE
+print("Prompt: "+prompt)
+
+# LLM RESPONSE
+print("LLM Response: "+llm.invoke(text))
+
+# CHAT MODEL RESPONSE
+messages = [HumanMessage(content=text)]
+print("Chat Model: "+chat_model.invoke(messages))
+```
+
+__Reference:__ [ChatPromptTemplate](https://api.python.langchain.com/en/latest/prompts/langchain_core.prompts.chat.ChatPromptTemplate.html)
+
+## Message Prompts
+LangChain provides different types of MessagePromptTemplate. The most commonly used are `AIMessagePromptTemplate`, `SystemMessagePromptTemplate` and `HumanMessagePromptTemplate`, which create an AI message, system message and human message respectively.
+
+All messages have a role and a content property. The role describes WHO is saying the message. The content property describes the content of the message. This can be a few different things:
+
+__Reference:__ [ChatPromptTemplate](https://api.python.langchain.com/en/latest/prompts/langchain_core.prompts.chat.ChatPromptTemplate.html)
+
+## Output parsers
+OutputParsers convert the raw output of a language model into a format that can be used downstream.
